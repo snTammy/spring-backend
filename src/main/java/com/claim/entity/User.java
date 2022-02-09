@@ -3,6 +3,8 @@ package com.claim.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -14,6 +16,10 @@ import javax.persistence.Table;
 public class User {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int id;
+	
 	@Column(name="email")
 	private String email;
 	
@@ -35,6 +41,14 @@ public class User {
 	
 	public User() {}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getTelephone() {
 		return telephone;
 	}

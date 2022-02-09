@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.claim.entity.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,String>{
+public interface UserRepository extends JpaRepository<User,Integer>{
 
 	@Query("Select U FROM User U WHERE U.email = ?1 AND U.password = ?2")
 	Optional<User> findUserByLogin(String email, String password);
