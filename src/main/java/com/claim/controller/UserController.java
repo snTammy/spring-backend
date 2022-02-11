@@ -47,4 +47,11 @@ public class UserController {
 		userRepository.save(user);
 		
 	}
+	
+	@RequestMapping(value="/findUserById",produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@ResponseBody
+	private ResponseEntity <Optional<User>>findUser(String email) {
+		Optional<User> userById = userRepository.findByEmail(email); 
+		return new ResponseEntity<>(userById, HttpStatus.OK);
+	}
 }
