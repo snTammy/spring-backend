@@ -2,7 +2,10 @@ package com.claim.controller;
 
 import java.util.Optional;
 
+import javax.servlet.http.Cookie;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +35,8 @@ public class UserController {
 		Optional<User> userByLogin = userRepository.findUserByLogin(user.getEmail(),user.getPassword()); 
 		//logic to validate
 		if(userByLogin.isPresent()) {
+			Cookie cookie = new Cookie("userId",Integer.toString(userByLogin.get().getId()));
+			
 			return new ResponseEntity<>(userByLogin,HttpStatus.OK);
 		
 		}else {

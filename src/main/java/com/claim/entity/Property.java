@@ -19,7 +19,7 @@ public class Property {
 	@Column(name = "id")
 	private int id;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="address_id")
 	private Address address;
 	

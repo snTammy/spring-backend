@@ -1,5 +1,6 @@
 package com.claim.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,15 @@ public class PropertyController {
 	private ResponseEntity <Optional<Property>>findProperty(Integer id) {
 		Optional<Property> propertyById = propertyRepository.findById(id); 
 		return new ResponseEntity<>(propertyById, HttpStatus.OK);
+	}
+	
+	//step 20: servlet for finding a list of students, 'findAll()'
+	@RequestMapping(value="/findAllProperties", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<Optional<List<Property>>> findAllProperties() {
+		Optional<List<Property>> properties = Optional.of(propertyRepository.findAll());
+		//return new ResponseEntity<Optional <List<Student>>>(students, HttpStatus.OK);
+		return new ResponseEntity<>(properties, HttpStatus.OK);
+		
 	}
 }
