@@ -33,7 +33,18 @@ public class Property {
 	
 	@Column(name="nickname")
 	private String nickname;
-		
+	
+	@Column(name="img_url")
+	private String imgURL;
+	
+	public String getImgURL() {
+		return imgURL;
+	}
+
+	public void setImgURL(String imgURL) {
+		this.imgURL = imgURL;
+	}
+
 	public Property() {}
 
 	public int getId() {
